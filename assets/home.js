@@ -32,7 +32,7 @@ const handleData = function (data) {
         inputURL.select();
         document.execCommand('copy');
 
-        this.innerText = "Réduire l'Url"
+        shortenBtn.innerText = "Réduire l'Url"
     }, {once: true});
 };
 
