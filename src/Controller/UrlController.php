@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UrlRepository;
 use App\service\UrlService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,10 +43,21 @@ class UrlController extends AbstractController
                 "statusText" => "Invalid arg URl"
             ]);
         }
-        $url = $this->urlService->addUrl($longurl,$domaine);
+        $url = $this->urlService->addUrl($longurl, $domaine);
         return $this->json([
             "link" => $url->getShortUrl(),
             "longUrl" => $url->getLongUrl(),
         ]);
+    }
+
+    #[Route('/{hash}', name: 'url_view ')]
+    public function view(string $hash, UrlRepository $urlRepository): Response
+    {
+        $url = $urlRepository->findOneBy(['hash' => $hash]);
+        if (!$url) {
+            return $this->redirectToRoute('app_homepage');
+        }
+
+        return $this->redirect($url->getLongUrl());
     }
 }
