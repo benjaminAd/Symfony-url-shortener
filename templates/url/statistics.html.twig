@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques pour {{ domain }}{% endblock %}
+{% block body %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1>Statistiques pour {{ domain }}</h1>
+            {{ render_chart(chart) }}
+        </div>
+    </div>
+{% endblock %}
+

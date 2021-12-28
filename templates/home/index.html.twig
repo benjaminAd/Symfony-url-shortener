@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Accueilggff{% endblock %}
 
 {% block body %}
     <main>
@@ -14,7 +14,9 @@
                             <h1>Le meilleur raccourcisseur d'URL.</h1>
                             <p>Un raccourcisseur d'URL conçu avec des outils puissants pour vous aider à développer et à
                                 protéger votre marque.</p>
+                            {% if is_granted('IS_ANONYMOUS') %}
                             <p><a class="btn btn-lg btn-primary" href="#">Inscription</a></p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
